@@ -1,18 +1,35 @@
 body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f3f4ed;
+    color: #333;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
+    background-image: url('assets/background.jpg'); /* Optional: Add a background image */
+    background-size: cover;
+    background-position: center;
 }
 
 #game-container {
-    border: 2px solid #5c6b73;
-    padding: 20px;
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 600px; /* Adjust width as needed */
+}
+
+#stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 18px;
+    background-color: #e0e7db;
+    padding: 10px;
+    border-radius: 4px;
 }
 
 #grid {
@@ -20,7 +37,7 @@ body {
     grid-template-columns: repeat(10, 50px);
     grid-template-rows: repeat(10, 50px);
     gap: 5px;
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto;
 }
 
 #grid div {
@@ -31,24 +48,144 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
+    transition: transform 0.3s;
+}
+
+#grid div:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
 }
 
 #controls {
     display: flex;
+    justify-content: center;
     gap: 10px;
 }
 
 #controls button {
+    background-color: #68a691;
+    color: #fff;
     padding: 10px 20px;
     border: none;
-    background-color: #5c6b73;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
     border-radius: 4px;
+    cursor: pointer;
     transition: background-color 0.3s;
 }
 
 #controls button:hover {
-    background-color: #465258;
+    background-color: #507f70;
+}
+
+/* Optional: Add a subtle fade-in animation to the game container */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#game-container {
+    animation: fadeIn 1s forwards;
+}
+/* Enhanced Grid Styling */
+#grid {
+    border: 2px solid #68a691;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #e0e7db;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#grid div {
+    border-radius: 4px; /* Rounded corners for grid cells */
+}
+
+/* Styling for a modal that could be used for instructions, settings, etc. */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.modal-header,
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header .modal-title {
+    font-size: 24px;
+    margin: 0;
+}
+
+.modal-footer button {
+    background-color: #68a691;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal-footer button:hover {
+    background-color: #507f70;
+}
+
+/* Display the modal when its data-visible attribute is true */
+.modal[data-visible="true"] {
+    display: block;
+}
+
+/* Loading Spinner for potentially long-running actions */
+.loading-spinner {
+    border: 4px solid #e0e7db;
+    border-top: 4px solid #68a691;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Tooltip for providing info about various elements */
+.tooltip {
+    position: relative;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    background-color: #5c6b73;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Position above the element */
+    left: 50%;
+    margin-left: -60px; /* Center the tooltip */
+    width: 120px; /* Tooltip width */
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+}
+
+/* Enhanced Grid Styling */
+#grid {
+    border: 2px solid #68a691;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #e0e7db;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
