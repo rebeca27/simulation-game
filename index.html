@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Simulation Game</title>
+
+</head>
+
+<body>
+
+    <div id="game-container">
+        <div id="stats">
+            <div>Money: $<span id="money">100</span></div>
+            <!-- Other stats could go here -->
+        </div>
+
+        <div id="grid">
+            <!-- Grid cells will be created by JavaScript -->
+        </div>
+
+        <div id="controls">
+            <button onclick="selectCrop('wheat')">Buy Wheat Seeds ($5)</button>
+            <button onclick="selectCrop('corn')">Buy Corn Seeds ($10)</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
